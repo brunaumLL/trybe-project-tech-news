@@ -30,7 +30,12 @@ def scrape_novidades(html_content):
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    try:
+        selector = parsel.Selector(html_content)
+        next_page = selector.css("div.nav-links a.next::attr(href)").get()
+        return next_page
+    except not next_page:
+        return None
 
 
 # Requisito 4
@@ -41,6 +46,3 @@ def scrape_noticia(html_content):
 # Requisito 5
 def get_tech_news(amount):
     """Seu código deve vir aqui"""
-
-
-# 00h te conto um segredo
