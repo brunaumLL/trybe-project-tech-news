@@ -1,6 +1,19 @@
+import requests
+import time
+
+
 # Requisito 1
 def fetch(url):
-    """Seu código deve vir aqui"""
+    time.sleep(1)
+    try:
+        response = requests.get(
+            url, headers={"user-agent": "Fake user-agent"}, timeout=3.0
+        )
+        response.raise_for_status()
+    except (requests.HTTPError, requests.Timeout):
+        return None
+    else:
+        return response.text
 
 
 # Requisito 2
@@ -21,5 +34,6 @@ def scrape_noticia(html_content):
 # Requisito 5
 def get_tech_news(amount):
     """Seu código deve vir aqui"""
+
 
 # 00h te conto um segredo
